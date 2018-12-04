@@ -50,6 +50,9 @@ public abstract class Entity {
         return this.animation;
     }
 
+    public Location getLocation(){
+        return this.location;
+    }
 
     public void render(SpriteBatch batch){
         if(!this.inAnimation()) return;

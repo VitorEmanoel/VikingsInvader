@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import me.vitoremanoel.vikingsinvader.animation.VikingAnimation;
-import me.vitoremanoel.vikingsinvader.entity.Direction;
+import me.vitoremanoel.vikingsinvader.location.Direction;
 import me.vitoremanoel.vikingsinvader.entity.Persons;
-import me.vitoremanoel.vikingsinvader.entity.Viking;
+import me.vitoremanoel.vikingsinvader.entity.entitys.Viking;
 import me.vitoremanoel.vikingsinvader.input.MainInputProcess;
 
 public class VikingsInvader extends ApplicationAdapter {
@@ -31,21 +31,21 @@ public class VikingsInvader extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		this.batch.begin();
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !this.viking.inAnimation(VikingAnimation.ATTACk)) {
-			if(this.viking.getDirection() != Direction.LEFT)
-				this.viking.setDirection(Direction.LEFT);
-			this.viking.setX(this.viking.getX() - 1);
+			if(this.viking.getLocation().getDirection() != Direction.LEFT)
+				this.viking.getLocation().setDirection(Direction.LEFT);
+			this.viking.getLocation().setX(this.viking.getLocation().getX() - 1);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && !this.viking.inAnimation(VikingAnimation.ATTACk)) {
-			if(this.viking.getDirection() != Direction.RIGHT)
-				this.viking.setDirection(Direction.RIGHT);
-			this.viking.setX(this.viking.getX() + 1);
+			if(this.viking.getLocation().getDirection() != Direction.RIGHT)
+				this.viking.getLocation().setDirection(Direction.RIGHT);
+			this.viking.getLocation().setX(this.viking.getLocation().getX() + 1);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT) &&  !this.viking.inAnimation(VikingAnimation.ATTACk)) {
-			if(this.viking.getNowAnimation() != VikingAnimation.RUN)
+			if(this.viking.getAnimation() != VikingAnimation.RUN)
 				this.viking.playAnimation(VikingAnimation.RUN, Animation.PlayMode.LOOP);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.RIGHT) &&  !this.viking.inAnimation(VikingAnimation.ATTACk)) {
-			if(this.viking.getNowAnimation() == VikingAnimation.RUN){
+			if(this.viking.getAnimation() == VikingAnimation.RUN){
 				this.viking.playAnimation(VikingAnimation.IDLE, Animation.PlayMode.LOOP);
 			}
 		}
