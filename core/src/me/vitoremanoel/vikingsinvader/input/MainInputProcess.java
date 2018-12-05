@@ -15,13 +15,9 @@ public class MainInputProcess implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.RIGHT) {
-            if(this.viking.inAnimation(VikingAnimation.ATTACk)) return false;
-            this.viking.getLocation().setDirection(Direction.RIGHT);
-            this.viking.playAnimation(VikingAnimation.RUN, Animation.PlayMode.LOOP);
+            this.viking.run(Direction.RIGHT);
         } else if(keycode == Input.Keys.LEFT) {
-            if(this.viking.inAnimation(VikingAnimation.ATTACk)) return false;
-            this.viking.getLocation().setDirection(Direction.LEFT);
-            this.viking.playAnimation(VikingAnimation.RUN, Animation.PlayMode.LOOP);
+            this.viking.run(Direction.LEFT);
         }
         return false;
     }
@@ -53,21 +49,16 @@ public class MainInputProcess implements InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if(button == Input.Buttons.LEFT){
-            if(this.viking.inAnimation(VikingAnimation.RUN) || this.viking.inAnimation(VikingAnimation.ATTACk)) return false;
-            this.viking.playAnimation(VikingAnimation.ATTACk);
+            this.viking.attack();
         }
         return false;
+
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         if(button == Input.Buttons.RIGHT){
-            if(this.viking.inAnimation(VikingAnimation.RUN) || this.viking.inAnimation(VikingAnimation.ATTACk)) return false;
-            if(this.viking.getAnimation() == VikingAnimation.DEFENSE || this.viking.getAnimation() == VikingAnimation.ATTACk && this.viking.getAnimation().getAnimation().isAnimationFinished(this.viking.getStateTime()))
-                this.viking.playAnimation(VikingAnimation.IDLE);
-            else
-                this.viking.playAnimation(VikingAnimation.DEFENSE);
-
+            this.viking.defense();
         }
         return false;
     }

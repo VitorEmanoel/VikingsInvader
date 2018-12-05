@@ -9,8 +9,8 @@ import me.vitoremanoel.vikingsinvader.animation.animations.AnimationRun;
 public class VikingAnimation {
 
     public static AnimationRun RUN = AnimationRun.createAnimation(6, 0.20f, "run");
-    public static AnimationAttack ATTACk = AnimationAttack.createAnimation(3, 0.25f, "attack");
+    public static AnimationAttack ATTACk = AnimationAttack.createAnimation(2, 0.25f, "attack");
     public static AnimationIdle IDLE = AnimationIdle.createAnimation(4, 0.25f, "idle");
-    public static AnimationDefense DEFENSE = AnimationDefense.createAnimation(1, 0.25f, "attack");
+    public static AnimationDefense DEFENSE = AnimationDefense.createAnimation(1, 0.25f, "defense");
 
 }

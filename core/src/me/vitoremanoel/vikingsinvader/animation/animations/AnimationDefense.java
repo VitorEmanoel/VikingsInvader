@@ -13,7 +13,7 @@ public class AnimationDefense extends AbstractAnimation {
 
     public static AnimationDefense createAnimation(int length, float rate, String pathname){
         if(AnimationDefense.instance == null){
-            AnimationDefense.instance = new AnimationDefense(length, rate, pathname, new Texture("Viking/" + pathname + "_2" + ".png"));
+            AnimationDefense.instance = new AnimationDefense(length, rate, pathname, new Texture("Viking/" + pathname + "_0" + ".png"));
         }
         return AnimationDefense.instance;
     }
