@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="left-down" width="40" height="24" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="left-down" width="48" height="32" tilewidth="32" tileheight="32" infinite="0" nextobjectid="7">
  <tileset firstgid="1" source="2d Plataformer.tsx"/>
  <tileset firstgid="136" source="Ceu.tsx"/>
- <layer name="Ceu" width="40" height="24">
+ <objectgroup name="Colision">
+  <object id="6" name="Ground Colision" x="0" y="949.004">
+   <polyline points="0,0 608.206,0.473872 671.956,-64.0484 767.967,-64.015 895.969,-192.004 1247.88,-192.035 1311.96,-256.047 1414,-255.96 1413.96,-292.004 1412.91,-292.047 1412.87,-294.091 1411.87,-294.134 1411.96,-298.96 1411,-298.982 1410.98,-300.015 1409.91,-300.037 1409.91,-300.993 1407.9,-300.971 1407.99,-320.204 1535.98,-320.012 1536,74.9961 0,74.9961 -0.03125,-0.128906"/>
+  </object>
+ </objectgroup>
+ <layer name="Ground" width="48" height="32">
   <data encoding="base64" compression="zlib">
-   eJy9Vu1yhCAQ28cHlTvbWu91KzObMZdbtGqvPzKCfIUlZElmlhd0C3rH/ST6DQwbSI5xweRlcOL2JG113q8DOMsdmAJ+48Z+NK6PHZzlrqgcyoKb8x0dEaejOMNdUbl8LPh0PhrTKzrsKf513u8F8y9iz+Bx2WOp/O4H9wwkW3WCc1GeWCvL+hhXHKy3wV45HtkzoLyUG69T/It4M79M9WzrPYnuxlVdPmSeiJv6B/ii3NKg4oovRlyieDC/ROf/H1Afi+KBs4UOs7W9/a/R4sTxxt0oNGZ8M/b8iz2A9YnYTW/Gnn+xB4AbcwR6e9Yjl9EH//fureoOOQvc1Je21uI62lk3Wb6FxkZ60fGcs8AtU1/2aL5H6ovJ4r3w+uqTKWjTs1GfLvZ8P7PU2R8H+jfIetwPXz4/vv83x+xnONuq7dq/8zJ4JFvfAMqL5y2yPmuPY6y5Wvt0/kVe73x93A/clSJzsU44TlHMmLPy0VzN80R5PsqpqtVB6qon/a+erTHkvqrVSC+aq1r5taV33QfHJtK8cm/FRfUfvZWSjGfe0Xuey+p/6pfRHpgfe7/qWffQ0oHy3Ztb9aD70Dcb+lffm2gct+l5R7GJdKXzF1+jeityzCzzqY9G77tsr3uOzhH/fwC1EQ/C
-  </data>
- </layer>
- <layer name="Objetos" width="40" height="24">
-  <data encoding="base64" compression="zlib">
-   eJztzrEJAEAIBEEbsf82TT/4VDhhBjbfKgAAgJv6KU1/SpL8tmUAGDYBXQ==
-  </data>
- </layer>
- <layer name="Map" width="40" height="24">
-  <data encoding="base64" compression="zlib">
-   eJztk0EKgCAQRYcgl21bdTBP0raj51ADNhkojPiJefBAceFjUCLHcRzH+QfxFoX4IQpoPSW4byqIAvftyU05miUZ6JrVQVh93LbSuwmhr6ZtVF9tm3Uf3yv/bqbnPwzZurbNsq9lJi0it1n09Wxj9dvQ6jPZy/vq2caeKCQVJg==
+   eJztlM0KQEAURu8GiykrZeUZPA9LHsLWo7vilpmGLnX99Z06KaVOX2OIAAAAAAAAAACA/+HYdH26h1uuMLD1xreTswUtm8/Pkb7TP7eXbLXj3f2ypZiQv234viR/65hWNGwbtB9tGdtWo1V7x/ZBu7bpjFbt0m/ZbtEvZzwj/Rl+S394xi27Rdkp9v9r3H5vvXVM7X1w9X6Ax07x3jUW
   </data>
  </layer>
 </map>
