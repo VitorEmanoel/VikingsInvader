@@ -5,34 +5,30 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.physics.box2d.Box2D;
 import me.vitoremanoel.vikingsinvader.entity.Persons;
 import me.vitoremanoel.vikingsinvader.entity.entitys.Viking;
 import me.vitoremanoel.vikingsinvader.input.MainInputProcess;
+import me.vitoremanoel.vikingsinvader.world.GameWorld;
 
 public class VikingsInvader extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
-	private TiledMap tiledMap;
-	private TiledMapRenderer tiledMapRenderer;
 	private Viking viking;
+	private GameWorld gameWorld;
 
 	@Override
 	public void create () {
+		Box2D.init();
 		this.batch = new SpriteBatch();
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		this.camera.update();
 
-		this.tiledMap = new TmxMapLoader().load("map/map.tmx");
-		this.tiledMapRenderer = new OrthogonalTiledMapRenderer(this.tiledMap);
-
 		Gdx.input.setInputProcessor(new MainInputProcess());
 
 		this.viking = Persons.VIKING;
+		this.gameWorld = GameWorld.getInstance();
 	}
 
 	@Override
@@ -40,10 +36,9 @@ public class VikingsInvader extends ApplicationAdapter {
 		Gdx.gl.glClearColor(255, 255, 255, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		this.camera.update();
-		tiledMapRenderer.setView(this.camera);
-		tiledMapRenderer.render();
+		this.gameWorld.render(this.camera);
 		this.batch.begin();
-        this.viking.render(this.batch);
+		this.viking.render(this.batch);
 		this.batch.end();
 	}
 	

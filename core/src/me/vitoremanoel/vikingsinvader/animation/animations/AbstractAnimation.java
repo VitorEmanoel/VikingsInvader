@@ -20,7 +20,7 @@ public abstract class AbstractAnimation {
     protected static Texture[] loadTextures(int length, String pathname){
         Texture[] textures = new Texture[length];
         for(int i = 0; i < length; i++){
-            String texturePath = "Viking/" + pathname + "_" + i + ".png";
+            String texturePath =  pathname + "_" + i + ".png";
             textures[i] = new Texture(texturePath);
         }
         return textures;

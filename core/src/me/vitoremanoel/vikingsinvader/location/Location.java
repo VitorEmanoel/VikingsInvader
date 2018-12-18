@@ -4,7 +4,9 @@ public class Location {
 
     private float x;
     private float y;
+    private float rotate;
     private Direction direction;
+
 
     public Location(float x, float y){
         this.x = x;
@@ -39,5 +41,13 @@ public class Location {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public float getRotation() {
+        return rotate;
+    }
+
+    public void setRotation(float degree) {
+        this.rotate = degree;
     }
 }

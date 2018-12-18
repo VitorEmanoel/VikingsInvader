@@ -12,7 +12,7 @@ public class DesktopLauncher {
 		config.title = "VikingsInvader";
 		config.width = 1280;
 		config.addIcon("icon.png", Files.FileType.Internal);
-		config.height = 720;
+		config.height = 736;
 		new LwjglApplication(new VikingsInvader(), config);
 	}
 }

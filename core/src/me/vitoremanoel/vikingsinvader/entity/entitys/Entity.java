@@ -7,16 +7,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import me.vitoremanoel.vikingsinvader.animation.animations.AbstractAnimation;
 import me.vitoremanoel.vikingsinvader.location.Direction;
 import me.vitoremanoel.vikingsinvader.location.Location;
+import me.vitoremanoel.vikingsinvader.location.Size;
 
 public abstract class Entity {
 
     private Location location;
     private AbstractAnimation animation;
+    protected Size size;
     private float stateTime;
 
-    public Entity(){
+    public Entity(Size size){
         this.location = new Location(0, 0);
         this.stateTime = 0f;
+        this.size = size;
+
     }
 
     public void stopAnimation(){
@@ -32,6 +36,10 @@ public abstract class Entity {
     public void playAnimation(AbstractAnimation animation, Animation.PlayMode playMode){
         animation.getAnimation().setPlayMode(playMode);
         this.playAnimation(animation);
+    }
+
+    public Size getSize() {
+        return size;
     }
 
     public boolean inAnimation(){
@@ -60,8 +68,10 @@ public abstract class Entity {
         Sprite spriteFrame = new Sprite(this.animation.getAnimation().getKeyFrame(this.stateTime));
         if(this.location.getDirection() == Direction.LEFT){
             spriteFrame.flip(true, false);
+            this.getLocation().setX(this.getLocation().getX() - this.size.getHeight()/2);
         }
-        spriteFrame.setPosition(this.location.getX(), this.location.getY());
+        spriteFrame.setRotation(this.getLocation().getRotation());
+        spriteFrame.setPosition(this.location.getX() - (this.size.getWidth() + this.size.getWidth()/2), this.location.getY() - (this.size.getHeight() + this.size.getHeight()/2));
         spriteFrame.draw(batch);
     }
 }
