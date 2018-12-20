@@ -21,19 +21,21 @@ public class Viking extends Entity {
     public Viking(){
         super(new Size(20, 20));
         this.getLocation().setDirection(Direction.RIGHT);
-        this.playAnimation(VikingAnimation.IDLE, Animation.PlayMode.LOOP);
+        this.playAnimation(VikingAnimation.RUN, Animation.PlayMode.LOOP);
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(50, 400);
+        bodyDef.position.set(50, 120);
 
         this.body = GameWorld.getInstance().getWorld().createBody(bodyDef);
         this.body.setFixedRotation(true);
+        this.body.setUserData(this);
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.density = 1f;
         PolygonShape polygonShape = new PolygonShape();
         polygonShape.setAsBox(this.size.getWidth(), this.size.getHeight());
         fixtureDef.shape = polygonShape;
         this.fixture = this.body.createFixture(fixtureDef);
+        this.fixture.setUserData(this);
         polygonShape.dispose();
     }
 
@@ -46,7 +48,6 @@ public class Viking extends Entity {
         this.getLocation().setX(this.body.getPosition().x);
         this.getLocation().setY(this.body.getPosition().y);
         this.getLocation().setRotation((float)Math.toDegrees(this.body.getAngle()));
-        moving();
         super.render(batch);
     }
 
@@ -76,31 +77,5 @@ public class Viking extends Entity {
         this.playAnimation(VikingAnimation.RUN, Animation.PlayMode.LOOP);
     }
 
-    private void moving(){
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT) &&  !this.inAnimation(VikingAnimation.ATTACk)) {
-            if (this.getAnimation() != VikingAnimation.RUN){
-                this.playAnimation(VikingAnimation.RUN, Animation.PlayMode.LOOP);
-            }
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && Gdx.input.isKeyPressed(Input.Keys.RIGHT) &&  !this.inAnimation(VikingAnimation.ATTACk)) {
-            if(this.getAnimation() == VikingAnimation.RUN){
-                this.playAnimation(VikingAnimation.IDLE, Animation.PlayMode.LOOP);
-            }
-
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !this.inAnimation(VikingAnimation.ATTACk)) {
-            if (this.getLocation().getDirection() != Direction.LEFT)
-                this.getLocation().setDirection(Direction.LEFT);
-            if(this.body.getLinearVelocity().y >= 0)
-                this.body.setLinearVelocity(new Vector2(-50, 0));
-
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && !this.inAnimation(VikingAnimation.ATTACk)) {
-            if(this.getLocation().getDirection() != Direction.RIGHT)
-                this.getLocation().setDirection(Direction.RIGHT);
-            if(this.body.getLinearVelocity().y >= 0)
-                this.body.setLinearVelocity(new Vector2(50, 0));
-        }
-    }
 
 }

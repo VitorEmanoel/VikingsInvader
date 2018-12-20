@@ -11,16 +11,18 @@ import me.vitoremanoel.vikingsinvader.location.Size;
 
 public abstract class Entity {
 
-    private Location location;
-    private AbstractAnimation animation;
+    protected Location location;
+    protected AbstractAnimation animation;
+    private boolean hide;
     protected Size size;
-    private float stateTime;
+
+    private boolean paused;
+    protected float stateTime;
 
     public Entity(Size size){
         this.location = new Location(0, 0);
         this.stateTime = 0f;
         this.size = size;
-
     }
 
     public void stopAnimation(){
@@ -50,6 +52,18 @@ public abstract class Entity {
         return (this.animation == animation && !this.animation.getAnimation().isAnimationFinished(this.stateTime));
     }
 
+    public void pauseAnimation(){
+        this.paused = true;
+    }
+
+    public boolean isPaused(){
+        return this.paused;
+    }
+
+    public void resumeAnimation(){
+        this.paused = false;
+    }
+
     public float getStateTime(){
         return this.stateTime;
     }
@@ -62,9 +76,23 @@ public abstract class Entity {
         return this.location;
     }
 
+    public void hide(){
+        this.hide = true;
+    }
+
+    public void show(){
+        this.hide = false;
+    }
+
+    public boolean isHide(){
+        return this.hide;
+    }
+
     public void render(SpriteBatch batch){
+        if(this.hide) return;
         if(!this.inAnimation()) return;
-        this.stateTime += Gdx.graphics.getDeltaTime();
+        if(!paused)
+            this.stateTime += Gdx.graphics.getDeltaTime();
         Sprite spriteFrame = new Sprite(this.animation.getAnimation().getKeyFrame(this.stateTime));
         if(this.location.getDirection() == Direction.LEFT){
             spriteFrame.flip(true, false);
