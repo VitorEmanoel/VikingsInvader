@@ -82,7 +82,7 @@ public class Catapult extends Entity {
     }
 
     public void launch(float force){
-        this.rock.getBody().applyForce(new Vector2(force * -1, force/2), this.rock.getBody().getLocalCenter(), true);
+        this.rock.getBody().applyForce(new Vector2(force * -1, force), this.rock.getBody().getLocalCenter(), true);
         this.launched = true;
         this.playAnimation(CatapultAnimation.LAUNCH, Animation.PlayMode.NORMAL);
     }

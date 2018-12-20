@@ -42,9 +42,9 @@ public class GameWorld {
 
         this.world = new World(new Vector2(0, -10f), false);
         this.world.setContactListener(new WorldContactListener());
-        this.debugRenderer = new Box2DDebugRenderer(); // Apenas versão de teste
-        this.debugRenderer.setDrawBodies(true);
-        this.debugRenderer.setDrawVelocities(true);
+        //this.debugRenderer = new Box2DDebugRenderer(); // Apenas versão de teste
+//        this.debugRenderer.setDrawBodies(true);
+  //      this.debugRenderer.setDrawVelocities(true);
         TiledMapUtil.loadColisions(this.world, this.map.getLayers().get("Colision").getObjects(), BodyDef.BodyType.StaticBody);
         TiledMapUtil.loadColisions(this.world, this.map.getLayers().get("Objetos").getObjects(), BodyDef.BodyType.StaticBody, "Chest");
     }
@@ -92,7 +92,7 @@ public class GameWorld {
         }
         this.mapRenderer.setView(camera);
         this.mapRenderer.render();
-        this.debugRenderer.render(this.world, camera.combined);//Apenas para versão de teste
+      //  this.debugRenderer.render(this.world, camera.combined);//Apenas para versão de teste
     }
 
     private void removeBodySafely(Body body) {
